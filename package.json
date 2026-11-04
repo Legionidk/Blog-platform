@@ -1,0 +1,22 @@
+{
+    "name": "rest-blog-platform",
+    "version": "1.0.0",
+    "description": "REST API blog platform for checkpoint",
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "main": "src/index.js",
+    "scripts": {
+        "dev": "nodemon src/index.js"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.19.3",
+        "dotenv": "^18.0.9",
+        "express": "^5.3.0",
+        "joi": "^18.3.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14",
+        "prisma": "^6.19.3"
+    }
+}
