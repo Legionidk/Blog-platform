@@ -1,0 +1,34 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id        Int      @id @default(autoincrement())
+    email     String   @unique
+    name      String
+    role      String   @default("USER") // ENUM не работает в SQLite, поэтому просто String
+    createdAt DateTime @default(now())
+    posts     Post[]
+}
+
+model Post {
+    id        Int      @id @default(autoincrement())
+    title     String
+    content   String?
+    published Boolean  @default(false)
+    createdAt DateTime @default(now())
+    authorId  Int
+    author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+    tags      Tag[]
+}
+
+model Tag {
+    id    Int    @id @default(autoincrement())
+    name  String @unique
+    posts Post[]
+}
